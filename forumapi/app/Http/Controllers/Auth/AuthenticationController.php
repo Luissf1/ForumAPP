@@ -44,7 +44,7 @@ class AuthenticationController extends Controller
 
         $user = User::whereUsername($request->username)->first();
 
-        if (!$user || Hash::check($request->password, $user->password))
+        if (!$user || !Hash::check($request->password, $user->password))
             return response([
                 'message' => 'Invalid credentials'
             ], 422);
