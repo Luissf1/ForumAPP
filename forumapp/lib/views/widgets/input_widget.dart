@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class InputWidget extends StatelessWidget {
   const InputWidget({
@@ -24,6 +25,7 @@ class InputWidget extends StatelessWidget {
         decoration: InputDecoration(
             border: InputBorder.none,
             hintText: hintText,
+            hintStyle: GoogleFonts.poppins(),
             contentPadding: const EdgeInsets.symmetric(horizontal: 20)),
       ),
     );
