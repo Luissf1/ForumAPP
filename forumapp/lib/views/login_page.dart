@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:forumapp/views/register_page.dart';
 import 'package:forumapp/views/widgets/input_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -19,13 +21,13 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 'Login Page',
-                style: GoogleFonts.poppins(fontSize: size + 0.080),
+                style: GoogleFonts.poppins(fontSize: size * 0.080),
               ),
               const SizedBox(
                 height: 30,
@@ -54,11 +56,28 @@ class _LoginPageState extends State<LoginPage> {
                       const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 ),
                 onPressed: () {},
-                child: Text('Login',
-                    style: GoogleFonts.poppins(
-                      fontSize: size = 0.040,
-                    )),
+                child: Text(
+                  'Login',
+                  style: GoogleFonts.poppins(
+                    fontSize: size * 0.040,
+                  ),
+                ),
               ),
+              const SizedBox(
+                height: 20,
+              ),
+              TextButton(
+                onPressed: () {
+                  Get.to(() => const RegisterPage());
+                },
+                child: Text(
+                  'Register',
+                  style: GoogleFonts.poppins(
+                    fontSize: size * 0.040,
+                    color: Colors.black,
+                  ),
+                ),
+              )
             ],
           ),
         ),
