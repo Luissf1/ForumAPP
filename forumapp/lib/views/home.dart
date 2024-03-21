@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forumapp/views/widgets/post_field.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,24 +20,9 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Column(
           children: [
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-              child: Container(
-                width: double.infinity,
-                height: 70,
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: const TextField(
-                    decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: "What do you want to ask?",
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-                )),
-              ),
+            PostField(
+              hintText: "What do yu want to ask?",
+              controller: TextEditingController(),
             ),
           ],
         ));
