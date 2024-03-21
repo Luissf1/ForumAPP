@@ -9,6 +9,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final TextEditingController _postController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,8 +23,8 @@ class _HomePageState extends State<HomePage> {
         body: Column(
           children: [
             PostField(
-              hintText: "What do yu want to ask?",
-              controller: TextEditingController(),
+              hintText: "What do you want to ask?",
+              controller: _postController,
             ),
           ],
         ));
