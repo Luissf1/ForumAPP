@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:forumapp/views/widgets/post_field.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -47,14 +48,26 @@ class _HomePageState extends State<HomePage> {
                 height: 20,
               ),
               Container(
-                height: 150,
+                padding: EdgeInsets.all(10),
                 width: double.infinity,
                 decoration: BoxDecoration(
                     color: Colors.grey[200],
                     borderRadius: BorderRadius.circular(10)),
-                child: const Column(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Text'),
+                    Text('Text1', style: GoogleFonts.poppins()),
+                    Text('Text2',
+                        style: GoogleFonts.poppins(
+                          fontSize: 10,
+                        )),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text('Text3', style: GoogleFonts.poppins()),
+                    Row(
+                      children: [],
+                    )
                   ],
                 ),
               ),
