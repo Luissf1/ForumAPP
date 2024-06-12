@@ -50,12 +50,9 @@ class AuthenticationController extends GetxController {
           backgroundColor: Colors.red,
           colorText: Colors.white,
         );
-        print(json.decode(response.body));
       }
     } catch (e) {
       isLoading.value = false;
-
-      print(e.toString());
     }
   }
 
@@ -92,12 +89,9 @@ class AuthenticationController extends GetxController {
           backgroundColor: Colors.red,
           colorText: Colors.white,
         );
-        print(json.decode(response.body));
       }
     } catch (e) {
       isLoading.value = false;
-
-      print(e.toString());
     }
   }
 }
