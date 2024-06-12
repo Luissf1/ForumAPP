@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:forumapp/controllers/post_controller.dart';
 import 'package:forumapp/views/widgets/post_data.dart';
 import 'package:forumapp/views/widgets/post_field.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,7 +12,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final TextEditingController _postController = TextEditingController();
+  final PostController _postController = Get.put(PostController());
+  final TextEditingController _textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 PostField(
                   hintText: "What do you want to ask?",
-                  controller: _postController,
+                  controller: _textController,
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
