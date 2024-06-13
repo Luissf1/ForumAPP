@@ -41,4 +41,31 @@ class PostController extends GetxController {
       print(e.toString());
     }
   }
+
+  Future createPost({
+    required String content,
+  }) async {
+    try {
+      var data = {
+        'content': content,
+      };
+
+      var response = await http.post(
+        Uri.parse('${url}/feed/store'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${box.read('token')}',
+        },
+        body: data,
+      );
+
+      if (response.statusCode == 201) {
+        print(json.decode(response.body));
+      } else {
+        print(json.decode(response.body));
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 }
