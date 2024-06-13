@@ -8,9 +8,15 @@ import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 
 class PostController extends GetxController {
-  final posts = [].obs;
+  Rx<List<PostModel>> posts = Rx<List<PostModel>>([]);
   final isLoading = false.obs;
   final box = GetStorage();
+
+  @override
+  void onInit() {
+    getAllPosts();
+    super.onInit();
+  }
 
   Future getAllPosts() async {
     try {

@@ -51,18 +51,22 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   height: 20,
                 ),
-                const PostData(),
-                const SizedBox(
-                  height: 10,
-                ),
-                const PostData(),
-                const SizedBox(
-                  height: 10,
-                ),
-                const PostData(),
-                const SizedBox(
-                  height: 10,
-                ),
+                Obx(() {
+                  return _postController.isLoading.value
+                      ? const Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: _postController.posts.value.length,
+                          itemBuilder: (context, index) {
+                            return PostData(
+                              post: _postController.posts.value[index],
+                            );
+                          },
+                        );
+                }),
               ],
             ),
           ),
