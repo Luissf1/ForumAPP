@@ -51,7 +51,7 @@ class PostController extends GetxController {
       };
 
       var response = await http.post(
-        Uri.parse('${url}/feed/store'),
+        Uri.parse('${url}feed/store'),
         headers: {
           'Accept': 'application/json',
           'Authorization': 'Bearer ${box.read('token')}',
@@ -62,7 +62,13 @@ class PostController extends GetxController {
       if (response.statusCode == 201) {
         print(json.decode(response.body));
       } else {
-        print(json.decode(response.body));
+        Get.snackbar(
+          'Error',
+          json.decode(response.body)['message'],
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: Colors.red,
+          colorText: Colors.white,
+        );
       }
     } catch (e) {
       print(e.toString());
