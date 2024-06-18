@@ -89,6 +89,45 @@ class PostController extends GetxController {
           'Authorization': 'Bearer ${box.read('token')}',
         },
       );
+
+      if (response.statusCode == 200) {
+        isLoading.value = false;
+        final content = json.decode(response.body)['comments'];
+        for (var item in content) {
+          comments.value.add(CommentModel.fromJson(item));
+        }
+      } else {
+        isLoading.value = false;
+        print(json.decode(response.body));
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future createComment(id, body) async {
+    try {
+      isLoading.value = true;
+      var data = {
+        'body': body,
+      };
+
+      var request = await http.post(
+        Uri.parse('${url}feed/comment/$id'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${box.read('token')}',
+        },
+        body: data,
+      );
+
+      if (request.statusCode == 201) {
+        isLoading.value = false;
+        print(json.decode(request.body));
+      } else {
+        isLoading.value = false;
+        print(json.decode(request.body));
+      }
     } catch (e) {
       print(e.toString());
     }
