@@ -37,7 +37,7 @@ class _PostDetailsState extends State<PostDetails> {
               ),
               Container(
                 width: BorderSide.strokeAlignCenter,
-                height: 300,
+                height: 500,
                 child: ListView.builder(
                     itemCount: 10,
                     shrinkWrap: true,

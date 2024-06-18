@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:forumapp/constants/constants.dart';
+import 'package:forumapp/models/comment_model.dart';
 import 'package:forumapp/models/post_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -9,6 +10,7 @@ import 'package:http/http.dart' as http;
 
 class PostController extends GetxController {
   Rx<List<PostModel>> posts = Rx<List<PostModel>>([]);
+  Rx<List<CommentModel>> comments = Rx<List<CommentModel>>([]);
   final isLoading = false.obs;
   final box = GetStorage();
 
@@ -70,6 +72,23 @@ class PostController extends GetxController {
           colorText: Colors.white,
         );
       }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future getComments(id) async {
+    try {
+      comments.value.clear();
+      isLoading.value = true;
+
+      var response = await http.get(
+        Uri.parse('${url}feed/comments/$id'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ${box.read('token')}',
+        },
+      );
     } catch (e) {
       print(e.toString());
     }
